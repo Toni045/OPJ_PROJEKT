@@ -31,7 +31,7 @@ You can find the complete list of dependencies in the `requirements.txt` file.
 
 ```bash
 git clone https://github.com/Toni045/OPJ_PROJEKT
-cd tourism-guide-question-answering
+cd OPJ_PROJEKT
 ```
 
 ### 2. Set up a virtual environment (optional)
