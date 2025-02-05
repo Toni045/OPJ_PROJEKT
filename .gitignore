@@ -1,0 +1,54 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+*.venv
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and debug files
+*.log
+*.out
+*.err
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Python dependency files
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Model and dataset outputs
+/output/
+models/
+checkpoints/
+*.h5
+*.pt
+*.pth
+
+# Data files
+*.csv
+*.json
+*.xlsx
+*.db
+*.sqlite
+
+# Environment variables
+.env
+*.secret
+
+# Hugging Face transformers cache
+huggingface/
+cache/
