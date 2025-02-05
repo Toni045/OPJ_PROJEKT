@@ -6,9 +6,37 @@ import re
 import nltk
 from nltk.tokenize import sent_tokenize
 import torch
+from torch.utils.data import Dataset
 nltk.download('punkt')
 
 class DataPreparator:
+    def __init__(self):
+        pass
+
+    def custom_sentence_split(self, text):
+        """Custom sentence splitting using NLTK"""
+        return sent_tokenize(text)  # This uses NLTK's sentence tokenizer
+
+    def prepare_tourism_data(self, file_path):
+        """Prepare tourism data from CSV and return train, validation, and test sets"""
+        # Load the CSV data
+        data = pd.read_csv(file_path)
+        
+        # Create question-answer pairs from the text column (assuming 'text' is the column with tourism information)
+        qa_pairs = []
+        for _, row in data.iterrows():
+            text = row['text']  # Assuming the text data is in the 'text' column
+            qa_pairs.extend(self.create_qa_pairs(text))
+        
+        # Convert QA pairs to a DataFrame
+        qa_df = pd.DataFrame(qa_pairs)
+        
+        # Split data into train, validation, and test sets (80% train, 10% validation, 10% test)
+        train_data, temp_data = train_test_split(qa_df, test_size=0.2, random_state=42)
+        val_data, test_data = train_test_split(temp_data, test_size=0.5, random_state=42)
+        
+        return train_data, val_data, test_data
+    
     def create_qa_pairs(self, text):
         """Poboljšano kreiranje parova pitanje-odgovor"""
         sentences = self.custom_sentence_split(text)
